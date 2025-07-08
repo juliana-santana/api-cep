@@ -126,131 +126,85 @@ Objetivo: Validar que a API retorna os dados corretamente para o protocolo HTTPS
 - **Então:** O logradouro deve ser "Praça da Sé", o bairro "Sé" e a cidade "São Paulo".
 
 
-## Cenário 10: Pesquisa por Endereço com Parâmetros Válidos e Retorno no Formato JSON
+# 10. Cenários de Teste para Pesquisa de Endereço (ViaCEP)
 
-**Objetivo**: Validar que a API retorna os dados corretos ao consultar o CEP com parâmetros válidos (UF, Cidade, Logradouro) e o formato JSON.
+**Cenário 15: Pesquisa por Endereço com Parâmetros Válidos e Retorno no Formato JSON
+Objetivo: Validar que a API retorna os dados corretos ao consultar o CEP com parâmetros válidos (UF, Cidade, Logradouro) e o formato JSON.
 
-**Dado**:
-- O cliente informa os parâmetros obrigatórios:
-    - UF: "RS"
-    - Cidade: "Porto Alegre"
-    - Logradouro: "Domingos"
-    - Formato: "json"
+**Dado**:  
+Que o usuário consulta os parâmetros obrigatórios:
+- UF: "RS"
+- Cidade: "Porto Alegre"
+- Logradouro: "Domingos"
+- Formato: "json"
 
-**Quando**:
-- A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Domingos/json/`
+**Quando**:  
+A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Domingos/json/`
 
-**Então**:
-- O código de resposta da API deve ser 200 (OK).
-- A resposta deve estar no formato JSON.
-- A lista de CEPs retornados deve estar ordenada pela proximidade do nome do logradouro.
-- O número máximo de CEPs retornados deve ser 50.
-
----
-
-## Cenário 11: Pesquisa por Endereço com Logradouro Parcial
-
-**Objetivo**: Validar que a API retorna os dados corretos mesmo com um logradouro parcialmente informado.
-
-**Dado**:
-- O cliente informa os parâmetros obrigatórios:
-    - UF: "RS"
-    - Cidade: "Porto Alegre"
-    - Logradouro: "Domingos Jose"
-    - Formato: "json"
-
-**Quando**:
-- A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Domingos+Jose/json/`
-
-**Então**:
-- O código de resposta da API deve ser 200 (OK).
-- A resposta deve estar no formato JSON.
-- A lista de CEPs retornados deve estar ordenada pela proximidade do nome do logradouro.
-- O número máximo de CEPs retornados deve ser 50.
+**Então**:  
+O código de resposta da API deve ser 200 (OK).  
+A resposta deve estar no formato JSON.  
+A lista de CEPs retornados deve estar ordenada pela proximidade do nome do logradouro.  
+O número máximo de CEPs retornados deve ser 50.
 
 ---
 
-## Cenário 12: Pesquisa com Nome de Logradouro Menor que 3 Caracteres (Bad Request)
+**Cenário 16: Pesquisa por Endereço com Logradouro Parcial
+Objetivo: Validar que a API retorna os dados corretos mesmo com um logradouro parcialmente informado.
 
-**Objetivo**: Validar que a API retorna um código de erro 400 caso o logradouro tenha menos de 3 caracteres.
+**Dado**:  
+Que o usuário consulta os parâmetros obrigatórios:
+- UF: "RS"
+- Cidade: "Porto Alegre"
+- Logradouro: "Domingos Jose"
+- Formato: "json"
 
-**Dado**:
-- O cliente informa os parâmetros obrigatórios:
-    - UF: "RS"
-    - Cidade: "Porto Alegre"
-    - Logradouro: "Jo" (menos de 3 caracteres)
-    - Formato: "json"
+**Quando**:  
+A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Domingos+Jose/json/`
 
-**Quando**:
-- A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Jo/json/`
-
-**Então**:
-- O código de resposta da API deve ser 400 (Bad Request).
-- A resposta deve conter uma mensagem de erro informando que o logradouro precisa ter ao menos 3 caracteres.
-
----
-
-## Cenário 13: Pesquisa com Nome de Cidade Menor que 3 Caracteres (Bad Request)
-
-**Objetivo**: Validar que a API retorna um código de erro 400 caso o nome da cidade tenha menos de 3 caracteres.
-
-**Dado**:
-- O cliente informa os parâmetros obrigatórios:
-    - UF: "RS"
-    - Cidade: "Po" (menos de 3 caracteres)
-    - Logradouro: "Domingos"
-    - Formato: "json"
-
-**Quando**:
-- A API é consultada com a URL `viacep.com.br/ws/RS/Po/Domingos/json/`
-
-**Então**:
-- O código de resposta da API deve ser 400 (Bad Request).
-- A resposta deve conter uma mensagem de erro informando que a cidade precisa ter ao menos 3 caracteres.
+**Então**:  
+O código de resposta da API deve ser 200 (OK).  
+A resposta deve estar no formato JSON.  
+A lista de CEPs retornados deve estar ordenada pela proximidade do nome do logradouro.  
+O número máximo de CEPs retornados deve ser 50.
 
 ---
 
-## Cenário 14: Pesquisa com Parâmetros Válidos e Formato de Resposta XML
+**Cenário 17: Pesquisa com Nome de Logradouro Menor que 3 Caracteres (Bad Request)
+Objetivo: Validar que a API retorna um código de erro 400 caso o logradouro tenha menos de 3 caracteres.
 
-**Objetivo**: Validar que a API retorna os dados corretamente quando o formato de resposta solicitado é XML.
+**Dado**:  
+Que o usuário consulta os parâmetros obrigatórios:
+- UF: "RS"
+- Cidade: "Porto Alegre"
+- Logradouro: "Jo" (menos de 3 caracteres)
+- Formato: "json"
 
-**Dado**:
-- O cliente informa os parâmetros obrigatórios:
-    - UF: "RS"
-    - Cidade: "Porto Alegre"
-    - Logradouro: "Domingos"
-    - Formato: "xml"
+**Quando**:  
+A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Jo/json/`
 
-**Quando**:
-- A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Domingos/xml/`
-
-**Então**:
-- O código de resposta da API deve ser 200 (OK).
-- A resposta deve estar no formato XML.
-- A lista de CEPs retornados deve estar ordenada pela proximidade do nome do logradouro.
-- O número máximo de CEPs retornados deve ser 50.
+**Então**:  
+O código de resposta da API deve ser 400 (Bad Request).  
+A resposta deve conter uma mensagem de erro informando que o logradouro precisa ter ao menos 3 caracteres.
 
 ---
 
-## Cenário 15: Pesquisa com Parâmetros Válidos e Retorno de Mais de 50 Resultados (Limitação de CEPs)
+**Cenário 18: Pesquisa com Nome de Cidade Menor que 3 Caracteres (Bad Request)
+Objetivo: Validar que a API retorna um código de erro 400 caso o nome da cidade tenha menos de 3 caracteres.
 
-**Objetivo**: Validar que a API limita o número de resultados retornados a 50, mesmo quando existem mais CEPs correspondentes ao logradouro pesquisado.
+**Dado**:  
+Que o usuário consulta os parâmetros obrigatórios:
+- UF: "RS"
+- Cidade: "Po" (menos de 3 caracteres)
+- Logradouro: "Domingos"
+- Formato: "json"
 
-**Dado**:
-- O cliente informa os parâmetros obrigatórios:
-    - UF: "RS"
-    - Cidade: "Porto Alegre"
-    - Logradouro: "Domingos"
-    - Formato: "json"
+**Quando**:  
+A API é consultada com a URL `viacep.com.br/ws/RS/Po/Domingos/json/`
 
-**Quando**:
-- A API é consultada com a URL `viacep.com.br/ws/RS/Porto+Alegre/Domingos/json/`
-
-**Então**:
-- O código de resposta da API deve ser 200 (OK).
-- A resposta deve estar no formato JSON.
-- A lista de CEPs retornados deve estar ordenada pela proximidade do nome do logradouro.
-- O número de CEPs retornados deve ser no máximo 50, independentemente da quantidade total de CEPs correspondentes.
+**Então**:  
+O código de resposta da API deve ser 400 (Bad Request).  
+A
 
 ## Cenário de teste escolhido para automação
 
